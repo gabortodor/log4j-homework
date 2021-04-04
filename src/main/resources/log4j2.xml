@@ -1,0 +1,33 @@
+<Configuration status="info">
+<Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+        <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %X{iterationNumber} - %msg%n"/>
+    </Console>
+    <File name="File1" fileName="three_words_marker.log" append="false">
+        <MarkerFilter marker="THREE_WORDS" onMatch="ACCEPT" onMismatch="DENY"/>
+        <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %X{iterationNumber} - %msg%n"/>
+    </File>
+    <File name="File2" fileName="four_words_marker.log" append="false">
+        <MarkerFilter marker="FOUR_WORDS" onMatch="ACCEPT" onMismatch="DENY"/>
+        <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %X{iterationNumber} - %msg%n"/>
+    </File>
+    <File name="File3" fileName="no_marker.log" append="false">
+        <NoMarkerFilter onMatch="ACCEPT" onMismatch="DENY"/>
+        <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %X{iterationNumber} - %msg%n"/>
+    </File>
+    <File name="File4" fileName="Győrfi_Pál.log" append="false">
+        <TimeFilter start="20:00:00" end="05:00:00" timezone="CET" onMatch="ACCEPT" onMismatch="DENY"/>
+        <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %X{iterationNumber} - %msg%n"/>
+    </File>
+</Appenders>
+    <Loggers>
+        <Root level="all">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File1"/>
+            <AppenderRef ref="File2"/>
+            <AppenderRef ref="File3"/>
+            <AppenderRef ref="File4"/>
+        </Root>
+
+    </Loggers>
+</Configuration>
